@@ -1,0 +1,113 @@
+<html class=" js cssanimations">
+
+ 
+<head>
+    <meta charset="UTF-8">
+    <!-- meta -->
+    <meta name="Author" content="SetName">
+    <meta name="Keywords" content="warframe,warframe alerting,星际战甲,星际战甲警报,警报系统,时间轴">
+    <meta name="Description" content="This is a alerting system maintained by 16-Bit.这是一个由16-Bit维护的warframe警报系统。">
+    <!-- title -->
+    <title>&lt;紫卡计算器&gt; 16-Bits' Warframe Riven Calculator</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <!-- CSS -->
+    <link href="/wfTracker/static/css/jiang.css" rel="stylesheet" type="text/css">
+
+    <!-- js -->
+    <script>
+        function loadCSS() {
+            if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|wOSBrowser|BrowserNG|WebOS)/i))) {
+                document.write('<link href="/wfTracker/static/css/riven.main.css" rel="stylesheet" type="text/css" media="screen" />');
+            } else {
+                document.write('<link href="/wfTracker/static/css/riven.main.css" rel="stylesheet" type="text/css" media="screen" />');
+            }
+        }
+        loadCSS();
+    </script>
+    <script src="/wfTracker/static/js/weaponList.json" type="text/javascript"></script>
+</head>
+<body>
+    <div class="background-1">
+        <div id="header">
+            <img src="/wfTracker/static/img/logo.png" style="width:50px"/>
+            <ul>
+                <li>16-bit warframe 紫卡计算器</li>
+            </ul>
+            <div class="head_menu">
+                <ul>
+                    <li><a href="http://wf.setname.tk/riven/" class="topButton">紫卡计算器<br>Riven calculator</a></li>
+                    <li><a href="http://wf.setname.tk/wm/" class="topButton">市场<br>WM linkage</a></li>
+                    <li><a href="http://wf.setname.tk" class="topButton">事件追踪<br>Event tracker</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rivenBody">
+        <div class="mainDisplay">
+            <div id="buffs">
+                <p>正面</p>
+            </div>
+            <div id="curses">
+                <p>负面</p>
+            </div>
+        </div>
+        <ul>
+            <li><button onclick="display('me')"><strong>近战武器/Melee</strong></button></li>
+            <li><button onclick="display('sg')"><strong>霰弹枪类/Shotgun</strong></button></li>
+            <li><button onclick="display('pi')"><strong>手枪类/Pistol</strong></button></li>
+            <li><button onclick="display('ri')"><strong>步枪类/Rifle</strong></button></li>
+			<li><label styleheight: 30px;padding: 5 15 5 5;"><strong>检索</strong><input type="text" style="height: 30px;margin-top: -5;">
+</label>
+</li>
+        </ul>
+        <ul onclick="updateBuff()">
+            <li><label><input type="radio" name="buffNum" value="2" id="buffNum2" checked>[2] 正面/2 buffs</label></li>
+            <li><label><input type="radio" name="buffNum" value="3" id="buffNum3">[3] 正面/3 buffs</label></li>
+            <li><label><input type="checkbox" name="curse" value="1" id="curse" checked>负面</label></li>
+            <li><label><select name="rank" id="rank" style="border:  0;width:  100%;height:  100%;margin: 0 4;">
+                <option value="9">Rank 8</option>
+                <option value="8">Rank 7</option>
+                <option value="7">Rank 6</option>
+                <option value="6">Rank 5</option>
+                <option value="5">Rank 4</option>
+                <option value="4">Rank 3</option>
+                <option value="3">Rank 2</option>
+                <option value="2">Rank 1</option>
+                <option value="1">Rank 0</option>
+                </select></label></li>
+        </ul>
+        <div class="" id="me">
+            <p>近战武器/Melee</p>
+            <ul id="melee"></ul>
+        </div>
+        <div class="" id="sg">
+            <p>霰弹枪类/Shotgun</p>
+            <ul id="shotgun"></ul>
+        </div>
+        <div class="" id="pi">
+            <p>手枪类/Pistol</p>
+            <ul id="pistol"></ul>
+        </div>
+        <div class="" id="ri">
+            <p>步枪类/Rifle</p>
+            <ul id="rifle"></ul>
+        </div>
+    </div>
+    <div style="background-color:#333;">
+        <img class="floatleft" src="/wfTracker/static/img/0.jpg">
+        <img class="floatright" src="/wfTracker/static/img/1.jpg">
+    </div>
+    <div class="dark" >
+        <div><img src="/wfTracker/static/img/wflogo.png"></div>
+        <div >
+        <p>此项目由<strong>Platina Divana</strong>氏族维护</p>
+        <p>This program has been maintained by <strong>Platina Divana</strong></p>
+        <p>由Navie和Setname开发</p>
+        <p>This program is developed by Navie and Setname.</p>
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000518701'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1000518701%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
+    </div>
+    <script type="text/javascript" src="/wfTracker/static/js/riven.main.js"></script>
+</body>
+</html>

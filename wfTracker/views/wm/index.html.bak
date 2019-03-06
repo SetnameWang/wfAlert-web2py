@@ -1,0 +1,79 @@
+<html class=" js cssanimations">
+
+ 
+<head>
+    <meta charset="UTF-8">
+    <!-- meta -->
+    <meta name="Author" content="SetName">
+    <meta name="Keywords" content="warframe,warframe alerting,星际战甲,星际战甲警报,警报系统,时间轴">
+    <meta name="Description" content="This is a alerting system maintained by 16-Bit.这是一个由16-Bit维护的warframe警报系统。">
+    <!-- title -->
+    <title>&lt;市场&gt; 16-Bits' Warframe market linkage</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <!-- CSS -->
+    <link href="/wfTracker/static/css/jiang.css" rel="stylesheet" type="text/css">
+
+    <!-- js -->
+    <script>
+        function loadCSS() {
+            if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|wOSBrowser|BrowserNG|WebOS)/i))) {
+                document.write('<link href="/wfTracker/static/css/wm.main.css" rel="stylesheet" type="text/css" media="screen" />');
+            } else {
+                document.write('<link href="/wfTracker/static/css/wm.main.css" rel="stylesheet" type="text/css" media="screen" />');
+            }
+        }
+        loadCSS();
+    </script>
+</head>
+<body>
+    <div class="background-1">
+        <div id="header">
+            <img src="/wfTracker/static/img/logo.png" style="width:50px"/>
+            <ul>
+                <li>16-bit warframe market Linkage</li>
+            </ul>
+            <div class="head_menu">
+                <ul>
+                    <li><a href="http://wf.setname.tk/riven/" class="topButton">紫卡计算器<br>Riven calculator</a></li>
+                    <li><a href="http://wf.setname.tk/wm/" class="topButton">市场<br>WM linkage</a></li>
+                    <li><a href="http://wf.setname.tk" class="topButton">事件追踪<br>Event tracker</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="searchBar">
+            <div>
+                <input class="" title="输入搜索词" value="" placeholder="warframe.market" onkeyup="search()" onFocus="search()" id="searchBar">
+                <div id="optionDiv"></div>
+                <button>查询</button>
+                <ul>
+                    <li><label>Tips:本站支持中文输入</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="displayBlock">
+        </div>
+        <div class="displayBar">
+            <table id="displayUl"></table>
+        </div>
+        <div id="loading">载入中..</div>
+        <div id="display" onClick="closeDisplay()">
+            <input title="Ctrl + c复制" value="" placeholder="warframe.market" id="copyBar">
+        </div>
+    </div>
+    <div class="dark" >
+        <div><img src="/wfTracker/static/img/wflogo.png"></div>
+        <div >
+        <p>此项目由<strong>Platina Divana</strong>氏族维护</p>
+        <p>This program has been maintained by <strong>Platina Divana</strong></p>
+        <p>由Navie和Setname开发</p>
+        <p>This program is developed by Navie and Setname.</p>
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000518701'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1000518701%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="/wfTracker/static/js/wm.main.js"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<html class=" js cssanimations">
+<head>
+        <meta charset="UTF-8">
+        <!-- meta -->
+        <meta name="Author" content="SetName">
+        <meta name="Keywords" content="warframe,warframe alerting,星际战甲,星际战甲警报,警报系统,时间轴">
+        <meta name="Description" content="This is a alerting system maintained by 16-Bit.这是一个由16-Bit维护的warframe警报系统。">
+        <!-- title -->
+        <title>&lt;时间轴&gt; 16-Bits' Warframe Alerting System</title>
+        <!-- favicon -->
+        <link rel="icon" type="image/x-icon" href="/img/logo.png">
+        <!-- CSS -->
+        <link href="/wfTracker/static/css/jiang.css" rel="stylesheet" type="text/css">
+        <!-- js -->
+        <script>
+            function loadCSS() {
+                if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|wOSBrowser|BrowserNG|WebOS)/i))) {
+                    document.write('<link href="/wfTracker/static/css/main.mobile.css" rel="stylesheet" type="text/css" media="screen" />');
+                } else {
+                    document.write('<link href="/wfTracker/static/css/main.css" rel="stylesheet" type="text/css" media="screen" />');
+                }
+            }
+            loadCSS();
+        </script>
+        </head>
+<body>
+ 
+<div class="background-1">
+    <div id="plusOptions">+</div>
+    <div id="plusOptionBar">
+        <ul >
+            <li><img src="/wfTracker/static/img/alipay.jpg"><br><img src="/wfTracker/static/img/wechat.jpg"><br>捐赠我们</li>
+            <li><a href="#">捐赠名单</a></li>
+            <li><a href="http://wf.setname.tk/riven/">紫卡计算器 Riven calculator</a></li>
+            <li><a href="http://wf.setname.tk/wm/">市场 WM linkage</a></li>
+            <li><a href="http://wf.setname.tk">事件追踪 Event tracker</a></li>
+            <li><a href="https://www.wenjuan.com/s/aaqeAve/">给网站意见</a></li>
+        </ul>
+    </div>
+    <div id="header">
+        <img src="/wfTracker/static/img/logo.png" style="width:50px"/>
+        <ul>
+            <li>16-bit warframe 时间轴</li>
+        </ul>
+        <div class="head_menu">
+            <ul>
+                <li><a href="http://wf.setname.tk/riven/" class="topButton">紫卡计算器<br>Riven calculator</a></li>
+                <li><a href="http://wf.setname.tk/wm/" class="topButton">市场<br>WM linkage</a></li>
+                <li><a href="http://wf.setname.tk" class="topButton">事件追踪<br>Event tracker</a></li>
+            </ul>
+        </div>
+    </div>
+	<div id="poster" style="width: 100%;max-width: 1280px;text-align:  center;padding: 10px 0;background: #2c283a;"><a href="/wfTracker/static/poster.html" style="text-decoration: none;color: #fbfbfb;">公告</a></div>
+    {{num = 0}}
+    {{timeLeft = []}}
+    <div class="bodyFrame">
+        <div class="alertBody">
+            <ul id="leftFrame">
+                <li>
+                    <div id="alert">
+                        <p>警报 Alert</p>
+                        <table id="alerttable">
+                            {{for Alert in Alerts:}}
+                            <tr>
+                                <td class="rightTd">
+                                    <span class="location">{{=Alert['location']}}</span>
+                                    <span class="">{{=Alert['missionType']}}</span>
+                                    <span class="">{{=Alert['level']}}</span>
+                                </td>
+                                <td class="leftTd">
+                                    <span class="items">{{=Alert['items']}}</span>
+                                    <span class="crs">{{=Alert['crs']}}</span>
+                                    <span class="timeLeft" id="{{=num}}{{num = num +1}}"></span>{{timeLeft.append(Alert['timeLeft'])}}
+                                </td>
+                            </tr>
+                            {{pass}}
+                        </table>
+                    </div>
+                </li>
+                <li>
+                    <div id="cetusCycle">
+                    <p>希图斯 Cetus cycle</p>
+                    <table id="five">
+                        <tr>
+                            <td class="spanCentre" align="center">
+                                <span class="{{=cetusCycle['state']}}"><strong>{{=cetusCycle['text']}}</strong></span><span class="timeLeft" id="{{=num}}{{num = num +1}}"></span>{{timeLeft.append(cetusCycle['timeLeft'])}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="spanCentre" align="center">
+                                <span style="font-size: 8px;color: #6f6f6f;">#此数据可能不精确</span>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </li>
+                <li>
+                    <div id="voidTrader">
+                    <p>虚空商人 Void trader</p>
+                    <table id="five">
+                        <tr>
+                            <td class="">
+                                <span><strong>Baro Ki'Teer</strong> - {{=voidTrader['location']}}</span><span> - {{=voidTrader['state']}}</span>
+                            </td>
+                            <td>
+                                <span class="timeLeft" id="{{=num}}{{num = num +1}}"></span>{{timeLeft.append(voidTrader['timeLeft'])}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="">
+                                <span><strong>{{=dailyDeals['item']}}</strong> </span>
+                                <span>{{=dailyDeals['discount']}}% off </span>
+                                <span>现价:{{=dailyDeals['salePrice']}} </span>
+                                <span>{{=(dailyDeals['amountTotal'] - dailyDeals['amountSold'])}}/{{=dailyDeals['amountTotal']}} 剩余</span>
+                            </td>
+                            <td>
+                                <span class="timeLeft" id="{{=num}}{{num = num +1}}"></span>{{timeLeft.append(dailyDeals['timeLeft'])}}
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </li>
+                <li>
+                    <div id="syndicate">
+                    <p>赏金 Syndicate</p>
+                    <table id="five">
+                        {{for cetusSyndicate in cetusSyndicates:}}
+                        <tr>
+                            <td>
+                                <span>{{=cetusSyndicate['jobType']}}</span><br>
+                                <span>等级:{{=cetusSyndicate['level']}}</span>
+                                <span>声望奖励:{{=cetusSyndicate['xp']}}</span>
+                            </td>
+                            <td>
+                                <div class="rewardFrame">
+                                    <span>铜：{{for copper in cetusSyndicate['copper'].split('|'):}}</span>
+                                    <span class="copperRewards">{{=copper}}</span>
+                                    {{pass}}
+                                </div>
+                                <div class="rewardFrame">
+                                    <span>银：{{for sliver in cetusSyndicate['sliver'].split('|'):}}</span>
+                                    <span class="sliverRewards">{{=sliver}}</span>
+                                    {{pass}}
+                                </div>
+                                <div class="rewardFrame">
+                                    <span>金：{{for gold in cetusSyndicate['gold'].split('|'):}}</span>
+                                    <span class="goldRewards">{{=gold}}</span>
+                                    {{pass}}
+                                <div>
+                                <span>{{=cetusSyndicate['rewards']}}</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {{pass}}
+                    </table>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="alertBody">
+            <ul id="rightFrame">
+                <li>
+                    <div id="invasions">
+                    <p>入侵 Invasions</p>
+                    {{for invasion in invasions:}}
+                    <table id="five">
+                        <tr>
+                            <td width='165px' valign="bottom">
+                                <span class='leftReward'>{{=invasion['attackerReward']}}</span>
+                            </td>
+                            <td class="spanCentre" align="center">
+                                <span>{{=invasion['location']}}</span><br>
+                                <span style='font-size:10px'>{{=invasion['defender']}} vs {{=invasion['attacker']}}</span>
+                            </td>
+                            <td width='165px' valign="bottom">
+                                <span class='rightReward'>{{=invasion['defenderReward']}}</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="invaBar">
+                        <div class="invaBar" style="background-color:green;float:left;width:{{=int(invasion['percent']*100)}}%"></div>
+                    </div>
+                    {{pass}}
+                    </div>
+                </li>
+                <li>
+                    <div id="sorties">
+                        <p>突击 Sorties</p>
+                    <table id="five">
+                        <td>{{=sortieTitle}}</td><td></td>
+                        {{for step in sortieSteps:}}
+                        <tr>
+                            <td class="">
+                                <span><strong>{{=step['location']}}</strong></span>
+                                <span> {{=step['missionType']}}</span>
+                            </td>
+                            <td>
+                                <span> {{=step['modifierType']}}</span>
+                            </td>
+                        </tr>
+                        {{pass}}
+                    </table>
+                    </div>
+                </li>
+                <li>
+                    <div id="voidFissures">
+                    <p>虚空裂隙 Void fissures</p>
+                    <table id="five">
+                        {{for mission in activeMissions:}}
+                        <tr>
+                            <td class="">
+                                <span><strong>{{=mission['location']}}</strong></span><span> {{=mission['missionType']}}</span><span> {{=mission['level']}}</span>
+                            </td>
+                            <td>
+                                <span class="timeLeft" id="{{=num}}{{num = num +1}}"></span>{{timeLeft.append(mission['timeLeft'])}}
+                            </td>
+                        </tr>
+                        {{pass}}
+                    </table>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script> 
+    <script>
+    var timeLeft = new Array()
+    {{for i in range(0,len(timeLeft)):}}
+    timeLeft[{{=i}}] = {{=timeLeft[i]}};{{pass}}
+    //根据timeint打印剩余时间
+    function toTimeStr(timeInt){
+        var timestamp = (new Date()).valueOf();
+        timestamp = parseInt(timestamp/1000);
+        timeStr = "";
+        day = parseInt((timeInt-timestamp)/86400);
+        hour = parseInt((timeInt-timestamp)/3600);
+        minute = parseInt((timeInt-timestamp)/60);
+        sec = parseInt((timeInt-timestamp));
+        if (parseInt((timeInt-timestamp)/86400)>0)
+        {
+            timeStr = day.toString() + "天 " + (hour - (day * 24)).toString() + "小时 " + (minute - (hour * 60)).toString() + "分 " + (sec - (minute * 60)).toString() + "秒";
+        }
+        else if (parseInt((timeInt-timestamp)/3600)>0)
+        {
+            timeStr = (hour - (day * 24)).toString() + "小时 " + (minute - (hour * 60)).toString() + "分 " + (sec - (minute * 60)).toString() + "秒";
+        }
+        else
+        {
+            timeStr = (minute - (hour * 60)).toString() + "分 " + (sec - (minute * 60)).toString() + "秒";
+        }
+        return timeStr
+    }
+    function setTime(){
+        for (var i=0;i<{{=num}};i++)
+        {
+            timeVar = toTimeStr(timeLeft[i]);
+            document.getElementById(i).innerHTML=timeVar;
+            if(timeLeft[i]-(new Date()).valueOf() > 0){
+                document.getElementById(i).style.background = 'red';
+            }
+        }
+    }
+    setTime();
+    setInterval("setTime()",1000);
+	function loadPagebyDevice() {
+		if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|wOSBrowser|BrowserNG|WebOS)/i))) {
+			alert = '<li><div>' + document.getElementById('alert').innerHTML + '</div></li>';
+			cetusCycle = '<li><div>' + document.getElementById('cetusCycle').innerHTML + '</div></li>';
+			voidTrader = '<li><div>' + document.getElementById('voidTrader').innerHTML + '</div></li>';
+			syndicate = '<li><div>' + document.getElementById('syndicate').innerHTML + '</div></li>';
+			invasions = '<li><div>' + document.getElementById('invasions').innerHTML + '</div></li>';
+			sorties = '<li><div>' + document.getElementById('sorties').innerHTML + '</div></li>';
+			voidFissures = '<li><div>' + document.getElementById('voidFissures').innerHTML + '</div></li>';
+			document.getElementById('leftFrame').innerHTML = alert + cetusCycle + invasions + voidFissures + voidTrader + sorties + syndicate;
+			document.getElementById('rightFrame').innerHTML = "";
+			document.getElementById('poster').style.fontSize = "65px";
+
+		}
+	}
+	loadPagebyDevice();
+    document.getElementById('plusOptions').style.right = (document.body.clientWidth-1280)/2+10
+    document.getElementById('plusOptionBar').style.right = (document.body.clientWidth-1280)/2+10;
+    plusHov = 0;
+    plusOptionHov = 0;
+    document.getElementById('plusOptions').onmouseover=function(){
+        this.style.right = document.getElementById('plusOptions').style.right.replace('px','')-3;
+        plusHov = 1;
+    };
+    document.getElementById('plusOptionBar').onmouseover=function(){
+        plusOptionHov = 1;
+    }
+    document.getElementById('plusOptionBar').onmouseout=function(){
+        plusOptionHov = 0;
+    }
+    document.getElementById('plusOptions').onmouseout=function(){
+        this.style.right = (document.body.clientWidth-1280)/2+10;
+        document.getElementById('plusOptionBar').style.right = (document.body.clientWidth-1280)/2+10;
+        plusHov = 0;
+    };
+    document.getElementById('plusOptions').onclick=function(){
+        document.getElementById('plusOptionBar').style.display = 'block';
+        document.getElementById('plusOptionBar').style.right = (document.body.clientWidth-1280)/2+10;
+        document.getElementById('plusOptionBar').style.bottom = 50;
+    };
+    document.getElementsByTagName("body")[0].onclick=function(){
+        if(plusHov == 0 && plusOptionHov == 0){
+            document.getElementById('plusOptionBar').style.display = 'none';
+        document.getElementById('plusOptionBar').style.bottom = 0;
+        }
+    };
+    window.onresize = function(){
+        document.getElementById('plusOptions').style.right = (document.body.clientWidth-1280)/2+10;
+        document.getElementById('plusOptionBar').style.right = (document.body.clientWidth-1280)/2+10;
+    }
+    document.getElementById('plusOptionBar').style.display = 'none';
+    </script>
+</div>
+<div style="background-color:#333;">
+	<img class="floatleft" src="/wfTracker/static/img/0.jpg">
+	<img class="floatright" src="/wfTracker/static/img/1.jpg">
+</div>
+<div class="dark" >
+    <div><img src="/wfTracker/static/img/wflogo.png"></div>
+    <div >
+    <p>此项目由<strong>Platina Divana</strong>氏族维护</p>
+    <p>This program has been maintained by <strong>Platina Divana</strong></p>
+    <p>由Navie和Setname开发</p>
+    <p>This program is developed by Navie and Setname.</p>
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000518701'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1000518701%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+</div>
+</body>
+</html>

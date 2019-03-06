@@ -1,0 +1,426 @@
+for (var i = 0; i < weaponList['Melee']['Rivens'].length; i++) {
+    document.getElementById("melee").innerHTML = document.getElementById("melee").innerHTML + "<li><button id='" + weaponList['Melee']['Rivens'][i]['name'] + "' onclick=\"updateWeapon('Melee',\'" + weaponList['Melee']['Rivens'][i]['name'] + "','" + i + "')\"><span class=\"zh\"><strong>" + weaponList['Melee']['Rivens'][i]['zhName'] + "</strong></span><br><span class=\"en\">" + weaponList['Melee']['Rivens'][i]['name'] + "</span></button></li>";
+}
+for (var i = 0; i < weaponList['Shotgun']['Rivens'].length; i++) {
+    document.getElementById("shotgun").innerHTML = document.getElementById("shotgun").innerHTML + "<li><button id='" + weaponList['Shotgun']['Rivens'][i]['name'] + "' onclick=\"updateWeapon('Shotgun',\'" + weaponList['Shotgun']['Rivens'][i]['name'] + "','" + i + "')\"><span class=\"zh\"><strong>" + weaponList['Shotgun']['Rivens'][i]['zhName'] + "</strong></span><br><span class=\"en\">" + weaponList['Shotgun']['Rivens'][i]['name'] + "</span></button></li>";
+}
+for (var i = 0; i < weaponList['Pistol']['Rivens'].length; i++) {
+    document.getElementById("pistol").innerHTML = document.getElementById("pistol").innerHTML + "<li><button id='" + weaponList['Pistol']['Rivens'][i]['name'] + "' onclick=\"updateWeapon('Pistol',\'" + weaponList['Pistol']['Rivens'][i]['name'] + "','" + i + "')\"><span class=\"zh\"><strong>" + weaponList['Pistol']['Rivens'][i]['zhName'] + "</strong></span><br><span class=\"en\">" + weaponList['Pistol']['Rivens'][i]['name'] + "</span></button></li>";
+}
+for (var i = 0; i < weaponList['Rifle']['Rivens'].length; i++) {
+    document.getElementById("rifle").innerHTML = document.getElementById("rifle").innerHTML + "<li><button id='" + weaponList['Rifle']['Rivens'][i]['name'] + "' onclick=\"updateWeapon('Rifle',\'" + weaponList['Rifle']['Rivens'][i]['name'] + "','" + i + "')\"><span class=\"zh\"><strong>" + weaponList['Rifle']['Rivens'][i]['zhName'] + "</strong></span><br><span class=\"en\">" + weaponList['Rifle']['Rivens'][i]['name'] + "</span></button></li>";
+}
+function display(type) {
+    document.getElementById("me").style.height = "0px";
+    document.getElementById("sg").style.height = "0px";
+    document.getElementById("pi").style.height = "0px";
+    document.getElementById("ri").style.height = "0px";
+    document.getElementById(type).style.height = "1200px";
+    /*
+            document.getElementById("melee").style.display = "none";
+            document.getElementById("shotgun").style.display = "none";
+            document.getElementById("pistol").style.display = "none";
+            document.getElementById("rifle").style.display = "none";
+            document.getElementById(type).style.display = "block";
+            */
+}
+var weapon = '';
+var weaponType = '';
+var numW = -1;
+var buffs = {
+    "Melee": {
+        "Buffs": [{
+            "text": "% 近战伤害",
+            "value": 164.7
+        },
+        {
+            "text": "% 物理伤害",
+            "curse": true,
+            "value": 119.7
+        },
+        {
+            "text": "% 暴击几率",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 暴击伤害",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 元素伤害",
+            "value": 90.0
+        },
+        {
+            "text": "% 触发几率",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 触发时间",
+            "curse": true,
+            "value": 99.99
+        },
+        {
+            "text": "% 种族歧视",
+            "curse": true,
+            "value": 45.0
+        },
+        {
+            "text": "% 攻击速度",
+            "curse": true,
+            "value": 54.9
+        },
+        {
+            "text": "% 引导效率",
+            "value": 90.0
+        },
+        {
+            "text": "% 引导伤害",
+            "value": 150.3
+        },
+        {
+            "text": "% 处决伤害",
+            "curse": true,
+            "value": 119.7
+        },
+        {
+            "text": "% 攻击范围",
+            "curse": true,
+            "value": 119.7
+        },
+        {
+            "text": "% 划砍暴击",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "s 连击时间",
+            "curse": true,
+            "value": 8.1
+        },
+        ]
+    },
+    "Shotgun": {
+        "Buffs": [{
+            "text": "% 多重射击",
+            "curse": true,
+            "value": 119.7
+        },
+        {
+            "text": "% 基础伤害",
+            "curse": true,
+            "value": 164.7
+        },
+        {
+            "text": "% 物理伤害",
+            "value": 119.97
+        },
+        {
+            "text": "% 暴击几率",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 暴击伤害",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 元素伤害",
+            "value": 90.0
+        },
+        {
+            "text": "% 触发几率",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 触发时间",
+            "curse": true,
+            "value": 99.99
+        },
+        {
+            "text": "% 种族歧视",
+            "curse": true,
+            "value": 45.0
+        },
+        {
+            "text": "% 攻击速度",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 弹夹容量",
+            "curse": true,
+            "value": 50.0
+        },
+        {
+            "text": "% 弹药上限",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 飞行速度",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 装填速度",
+            "curse": true,
+            "value": 50.0
+        },
+        {
+            "text": "% 武器后座",
+            "curse": true,
+            "value": -90.0
+        },
+        {
+            "text": " 穿透",
+            "value": 2.7
+        },
+        ]
+    },
+    "Pistol": {
+        "Buffs": [{
+            "text": "% 多重射击",
+            "curse": true,
+            "value": 119.7
+        },
+        {
+            "text": "% 基础伤害",
+            "curse": true,
+            "value": 219.6
+        },
+        {
+            "text": "% 物理伤害",
+            "curse": true,
+            "value": 119.97
+        },
+        {
+            "text": "% 暴击几率",
+            "curse": true,
+            "value": 149.99
+        },
+        {
+            "text": "% 暴击伤害",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 元素伤害",
+            "value": 90.0
+        },
+        {
+            "text": "% 触发几率",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 触发时间",
+            "curse": true,
+            "value": 99.99
+        },
+        {
+            "text": "% 种族歧视",
+            "curse": true,
+            "value": 45.0
+        },
+        {
+            "text": "% 射击速度",
+            "curse": true,
+            "value": 74.7
+        },
+        {
+            "text": "% 弹夹容量",
+            "curse": true,
+            "value": 50.0
+        },
+        {
+            "text": "% 弹药上限",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 飞行速度",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 装填速度",
+            "curse": true,
+            "value": 50.0
+        },
+        {
+            "text": "% 武器后座",
+            "curse": true,
+            "value": -90.0
+        },
+        {
+            "text": "% 变焦",
+            "curse": true,
+            "value": 80.1
+        },
+        {
+            "text": " 穿透",
+            "value": 2.7
+        },
+        ]
+    },
+    "Rifle": {
+        "Buffs": [{
+            "text": "% 多重射击",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 基础伤害",
+            "curse": true,
+            "value": 165.0
+        },
+        {
+            "text": "% 物理伤害",
+            "curse": true,
+            "value": 119.97
+        },
+        {
+            "text": "% 暴击几率",
+            "curse": true,
+            "value": 149.99
+        },
+        {
+            "text": "% 暴击伤害",
+            "curse": true,
+            "value": 120.0
+        },
+        {
+            "text": "% 元素伤害",
+            "value": 90.0
+        },
+        {
+            "text": "% 触发几率",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 触发时间",
+            "curse": true,
+            "value": 99.99
+        },
+        {
+            "text": "% 种族歧视",
+            "curse": true,
+            "value": 45.0
+        },
+        {
+            "text": "% 射击速度",
+            "curse": true,
+            "value": 60.03
+        },
+        {
+            "text": "% 弹夹容量",
+            "curse": true,
+            "value": 50.0
+        },
+        {
+            "text": "% 弹药上限",
+            "curse": true,
+            "value": 49.95
+        },
+        {
+            "text": "% 飞行速度",
+            "curse": true,
+            "value": 90.0
+        },
+        {
+            "text": "% 装填速度",
+            "curse": true,
+            "value": 50.0
+        },
+        {
+            "text": "% 武器后座",
+            "curse": true,
+            "value": -90.0
+        },
+        {
+            "text": "% 变焦",
+            "curse": true,
+            "value": 59.99
+        },
+        {
+            "text": " 穿透",
+            "value": 2.7
+        },
+        ]
+    }
+}
+function updateWeapon(weapType, weap, num) {
+    weapon = weap;
+    weaponType = weapType;
+    numW = num;
+    document.getElementById(weapon).style.background='#244648';
+    document.getElementById(weapon).style.color='#d5d4d8';
+    calculation();
+}
+function updateBuff() {
+    calculation();
+}
+function pageScroll() { 
+	window.scrollBy(0,-10); 
+	scrolldelay = setTimeout('pageScroll()',100); 
+	if(document.documentElement.scrollTop==0) clearTimeout(scrolldelay);
+} 
+function calculation() {
+    if (numW != -1) {
+        var hascurse = document.getElementById("curse").checked;
+        var disposition = weaponList[weaponType]['Rivens'][numW]['disposition'];
+        if (disposition) {
+            var rank = document.getElementById("rank").value;
+            var numBuffs = '';
+            if (document.getElementById("buffNum2").checked == true) {
+                disposition = disposition * 0.66;
+                numBuffs = 2;
+            } else {
+                disposition = disposition * 0.5;
+                numBuffs = 3;
+            }
+            disposition = disposition * 1.5;
+        }
+        if (hascurse == true) {
+            disposition = disposition * 1.25;
+            document.getElementById("buffs").innerHTML = '<p>正面</>';
+            for (var i = 0; i < buffs[weaponType]['Buffs'].length; i++) {
+                var baseValue = disposition * buffs[weaponType]['Buffs'][i]['value'] / 9 * rank;
+                var minRange = (baseValue * 0.9).toFixed(2);
+                var maxRange = (baseValue * 1.1).toFixed(2);
+                document.getElementById("buffs").innerHTML = document.getElementById("buffs").innerHTML + '<span>' + minRange + '% 到 ' + maxRange + buffs[weaponType]['Buffs'][i]['text'] + '</span><br>'
+            }
+            document.getElementById("curses").innerHTML = '<p>负面</p>';
+            var disposition = weaponList[weaponType]['Rivens'][numW]['disposition'];
+            for (var i = 0; i < buffs[weaponType]['Buffs'].length; i++) {
+                if (buffs[weaponType]['Buffs'][i]['curse'] == true) {
+                    var baseValue = -1 * disposition * buffs[weaponType]['Buffs'][i]['value'] * 1.5 / 9 * rank;
+                    if (numBuffs == '2') {
+                        baseValue = 0.33 * baseValue;
+                    } else {
+                        baseValue = 0.5 * baseValue;
+                    }
+                    var minRange = (baseValue * 0.9).toFixed(2);
+                    var maxRange = (baseValue * 1.1).toFixed(2);
+                    document.getElementById("curses").innerHTML = document.getElementById("curses").innerHTML + '<span>' + minRange + '% 到 ' + maxRange + buffs[weaponType]['Buffs'][i]['text'] + '</span><br>'
+                }
+            }
+        } else {
+            document.getElementById("buffs").innerHTML = '<p>正面</>';
+            for (var i = 0; i < buffs[weaponType]['Buffs'].length; i++) {
+                var baseValue = disposition * buffs[weaponType]['Buffs'][i]['value'] / 9 * rank;
+                var minRange = (baseValue * 0.9).toFixed(2);
+                var maxRange = (baseValue * 1.1).toFixed(2);
+                document.getElementById("buffs").innerHTML = document.getElementById("buffs").innerHTML + '<span>' + minRange + '% 到 ' + maxRange + buffs[weaponType]['Buffs'][i]['text'] + '</span><br>'
+            }
+            document.getElementById("curses").innerHTML = '<p>负面</p>';
+        }
+		scrollTo(0,0);
+    }
+}

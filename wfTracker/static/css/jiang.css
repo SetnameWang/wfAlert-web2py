@@ -1,0 +1,107 @@
+@import url(https://fonts.googleapis.com/css?family=Signika+Negative:400,700);
+
+html, body {
+  height:100%;
+  font-family: 'Signika Negative', sans-serif;
+  font-size: 25px;
+  max-width: 1280px;
+  margin: 8px auto;
+}
+
+html {
+  background: url('/wfTracker/static/img/winter.jpg') fixed;
+  background-size: 100%;
+  min-width: 720px;
+}
+.background-1 {
+ background: #282537;
+ background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+ background-image: -moz-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+ background-image: -o-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+ background-image: radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+}  
+div {
+  overflow: hidden;
+}
+.background-1 p{
+    text-decoration: none;
+    transition: 500ms;
+}
+.head_menu{
+	float:right;
+}
+img {
+    box-shadow: 0px 0px 4px #000;
+    width: 42%;
+    max-width: 500px;
+}
+.zero{display:block;
+     float:left;
+	 height:30px;
+	 width:50px;
+	 margin:0 200px 0 0;
+	 }
+#header {
+  background: rgba(255, 255, 255, .5);
+  padding: 1%;
+  overflow: hidden;
+  height: 55px;
+}
+#header img {
+  float: left;
+  box-shadow: none;
+}
+.background-1 ul {
+  list-style: none;
+  float: left;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+.background-1 ul li {
+  float: left;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.fullscreen {
+  height: 95%;
+  position: relative;
+}
+.fullscreen .background-1 {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  text-shadow: 0px 0px 2px #000;
+}
+
+#alert{
+  
+  padding: 0px;
+}
+#invasions{
+  
+  padding: 0px;
+}
+#alerttable{
+    font-size:25px;
+    width: 100%;
+}
+.dark {
+  color: #eeeeec;
+  background: #010105;
+  padding: 0 5%;
+  height: 125px;
+}
+
+
+
+.floatleft {
+  float: left;
+  margin: 4% auto 4% 8%;
+}
+.floatright {
+  float: right;
+  margin: 4% 8% 4% auto;
+}
