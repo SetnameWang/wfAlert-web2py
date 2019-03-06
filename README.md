@@ -18,3 +18,5 @@ routers = dict(
 )
 
 Pay attention on indentation.
+
+Or you can drag rotes.py into ../web2py/ directly.
